@@ -1,109 +1,231 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Central de Atendimento</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Central de Atendimento - Sem Parar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            background: linear-gradient(135deg, #f5e6f0 0%, #e8d5e8 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
 
-body{
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    /* Fundo cinza bem claro, comum no site do Sem Parar */
-    background: #f8f9fa; 
-    color: #333;
-    text-align: center;
-}
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 1200px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            padding: 60px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
 
-.container{
-    padding: 40px 20px;
-}
+        /* COLUNA ESQUERDA */
+        .left-column {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
 
-.logo{
-    font-size: 30px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    /* Azul institucional do Sem Parar */
-    color: #001689; 
-}
+        .badge {
+            display: inline-block;
+            background: #f5d5e8;
+            color: #D60B52;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            width: fit-content;
+        }
 
-.sub{
-    /* Cinza escuro para o subtítulo */
-    color: #666; 
-    margin-bottom: 40px;
-}
+        .left-column h1 {
+            font-size: 48px;
+            color: #8B1538;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
 
-.card{
-    /* Cards brancos com sombra suave para destaque */
-    background: #ffffff;
-    margin: 15px auto;
-    padding: 25px 20px;
-    border-radius: 16px;
-    max-width: 320px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    /* Detalhe em Magenta no topo para reforçar a marca */
-    border-top: 5px solid #D60B52; 
-}
+        .left-column p {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
 
-.card h3{
-    margin-top: 0;
-    /* Títulos dos cards em azul */
-    color: #001689; 
-}
+        .company-name {
+            font-weight: 700;
+            color: #333;
+        }
 
-.card p {
-    color: #555;
-    font-size: 14px;
-}
+        .button-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
 
-.btn{
-    display: block;
-    /* Magenta oficial do Sem Parar */
-    background: #D60B52; 
-    color: white;
-    text-decoration: none;
-    padding: 14px;
-    border-radius: 30px; /* Bordas arredondadas como nos botões do site */
-    margin-top: 15px;
-    font-weight: bold;
-    transition: background 0.3s ease, transform 0.2s ease;
-}
+        .btn {
+            padding: 14px 32px;
+            border: none;
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-.btn:hover{
-    background: #b50945; /* Tom mais escuro no hover */
-    transform: translateY(-2px);
-}
+        .btn-primary {
+            background: #D60B52;
+            color: white;
+        }
 
-</style>
+        .btn-primary:hover {
+            background: #b50945;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(214, 11, 82, 0.3);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #D60B52;
+            border: 2px solid #D60B52;
+        }
+
+        .btn-secondary:hover {
+            background: #f5d5e8;
+            transform: translateY(-2px);
+        }
+
+        /* COLUNA DIREITA */
+        .right-column {
+            background: linear-gradient(135deg, #f5e6f0 0%, #e8d5e8 100%);
+            border-radius: 16px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .right-column h2 {
+            font-size: 28px;
+            color: #D60B52;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .service-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #D60B52;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .service-card h3 {
+            font-size: 16px;
+            color: #8B1538;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .service-card p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* RESPONSIVO */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding: 30px;
+            }
+
+            .left-column h1 {
+                font-size: 36px;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .right-column {
+                padding: 30px;
+            }
+        }
+    </style>
 </head>
-
 <body>
+    <div class="container">
+        <!-- COLUNA ESQUERDA -->
+        <div class="left-column">
+            <div class="badge">Central de Atendimento • Silver Corretora</div>
+            
+            <h1>Atendimento digital com praticidade, segurança e agilidade</h1>
+            
+            <p>
+                Bem-vindo à central de atendimento da <span class="company-name">SILVER CORRETORA DE SEGUROS E SERVIÇOS LTDA - ME</span>. 
+                Escolha abaixo o serviço desejado e fale diretamente pelo WhatsApp com nossa equipe.
+            </p>
 
-<div class="container">
+            <div class="button-group">
+                <a href="https://wa.me/5511999999999" class="btn btn-primary">Falar no WhatsApp</a>
+                <a href="#" class="btn btn-secondary">Ver opções de atendimento</a>
+            </div>
+        </div>
 
-<div class="logo">SEM PARAR</div>
-<div class="sub">Escolha uma opção de atendimento</div>
+        <!-- COLUNA DIREITA -->
+        <div class="right-column">
+            <h2>Atendimento Especializado</h2>
 
-<div class="card">
-    <h3>TAG COM PROBLEMA</h3>
-    <p>Fale com um atendente agora</p>
-    <a class="btn" href="https://wa.me/5511999999999">Abrir WhatsApp</a>
-</div>
+            <div class="service-card">
+                <h3>2ª Via de Boleto</h3>
+                <p>Solicite rapidamente a emissão do seu boleto.</p>
+            </div>
 
-<div class="card">
-    <h3>CANCELAMENTO</h3>
-    <p>Internet lenta ou sem conexão</p>
-    <a class="btn" href="https://wa.me/5511999999999">Solicitar Suporte</a>
-</div>
+            <div class="service-card">
+                <h3>Atualizar Tag</h3>
+                <p>Peça suporte para alteração ou atualização.</p>
+            </div>
 
-<div class="card">
-    <h3>OUTROS ASSUNTOSr</h3>
-    <p>Atualização de boletos e faturas</p>
-    <a class="btn" href="https://wa.me/5511999999999">Falar com Atendente</a>
-</div>
+            <div class="service-card">
+                <h3>Suporte ao Cliente</h3>
+                <p>Esclareça dúvidas e receba orientação.</p>
+            </div>
 
-</div>
-
+            <div class="service-card">
+                <h3>Atendimento Geral</h3>
+                <p>Fale com nossa equipe para demais assuntos.</p>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
